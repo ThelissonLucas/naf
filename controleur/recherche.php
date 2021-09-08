@@ -16,7 +16,7 @@ include_once "$racine/modele/bd.naf.inc.php";
 // appel du script de vue qui permet de gerer l'affichage des donnees
 $titre = "Accueil";
 include "$racine/vue/entete.html.php";
-include "$racine/vue/vueAccueil.php";
+include "$racine/vue/vueRecherche.php";
 include "$racine/vue/pied.html.php";
 
 

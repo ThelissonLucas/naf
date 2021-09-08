@@ -14,7 +14,9 @@
     <body>
     <nav>
 
-            <ul id="menuGeneral">    
+            <ul id="menuGeneral">
+                <li> <a href="./?action=accueil">Accueil</a></li> 
+                <li> <a href="./?action=barre">Recherche effectif</a></li> 
             </ul>
     </nav>
 
