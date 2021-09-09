@@ -17,7 +17,7 @@ $lesDivs = getDivisions();
 ;
 
 // appel du script de vue qui permet de gerer l'affichage des donnees
-$titre = "Accueil";
+$titre = "Recherche";
 include "$racine/vue/entete.html.php";
 include "$racine/vue/vueBarre.php";
 include "$racine/vue/pied.html.php";

@@ -4,11 +4,10 @@
         </br>
         <div class="card">
             <div class="container">
-
-                <form name="form1" method="get" action="recherche.php">
+                <form name="form1" method="post" action="./?action=recherche">
                 <h3>Critères géographiques</h3>
                     <li>Region : </li>
-                    <select cols='100' rows='10' class="form-control" name="nPoste">
+                    <select cols='100' rows='10' class="form-control" name="region">
                     <option selected="selected"></option>
                             <?php
                                 for ($i = 0; $i < count($lesRegs); $i++) {?>
@@ -19,7 +18,7 @@
                     </select>
 
                     <li>Departement : </li>
-                    <select cols='100' rows='10' class="form-control" name="nPoste">
+                    <select cols='100' rows='10' class="form-control" name="dep">
                     <option selected="selected"></option>
                             <?php
                                 for ($i = 0; $i < count($lesDeps); $i++) {?>
@@ -32,7 +31,7 @@
                     <h3>Critères sectoriels</h3>
 
                     <li>Section : </li>
-                    <select cols='100' rows='10' class="form-control" name="nPoste">
+                    <select cols='100' rows='10' class="form-control" name="section_code">
                     <option selected="selected"></option>
                             <?php
                                 for ($i = 0; $i < count($lesSecs); $i++) {?>
@@ -43,7 +42,7 @@
                     </select>
 
                     <li>Division : </li>
-                    <select cols='100' rows='10' class="form-control" name="nPoste">
+                    <select cols='100' rows='10' class="form-control" name="division_code">
                     <option selected="selected"></option>
                             <?php
                                 for ($i = 0; $i < count($lesDivs); $i++) {?>
