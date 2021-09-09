@@ -81,3 +81,33 @@ function getDivisions() {
     }
     return $resultat;
 }
+
+function getEffectifDepartement($departement) {
+    try {
+        $cnx = connexionPDO();
+        $req = $cnx->prepare("select sum(EFF_TOT) from effectifs where dep = '".$departement."'");
+        $req->execute();
+
+        $ligne = $req->fetch(PDO::FETCH_ASSOC);
+
+    } catch (PDOException $e) {
+        print "Erreur !: " . $e->getMessage();
+        die();
+    }
+    return $ligne;
+}
+
+function getEffectifRegion($region) {
+    try {
+        $cnx = connexionPDO();
+        $req = $cnx->prepare("select sum(EFF_TOT) from effectifs inner join departement on effectifs.DEP = departement.cp where region = '".$region."'");
+        $req->execute();
+
+        $ligne = $req->fetch(PDO::FETCH_ASSOC);
+    } catch (PDOException $e) {
+        print "Erreur !: " . $e->getMessage();
+        die();
+    }
+    return $ligne;
+}
+
