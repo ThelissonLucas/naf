@@ -24,16 +24,24 @@ else{
 $effectifDep = "";
 $effectifDep = getEffectifDepartement($departement);
 $effectifDep =  implode(",", $effectifDep);
+
 //Recuperation effectif total d'une region
 $effectifReg = "";
 $effectifReg = getEffectifRegion($region);
 $effectifReg = implode(",", $effectifReg);
 
+if(isset($effectivDiv)){
+$effectivDiv = getEffectifDivision($divisionCode);
+$effectifReg = implode(",", $effectivDiv);
+}
+
+//Recuperation effectif total d'une division
 if($effectifDep != ""){
     $valMarche = $effectifDep * 200;
-}
-else{
+} elseif($effectifReg != ""){
     $valMarche = $effectifReg * 200;
+} elseif($effectivDiv != ""){
+    $valMarche = $effectivDiv * 200;
 }
 
 

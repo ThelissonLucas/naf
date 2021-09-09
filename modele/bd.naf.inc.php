@@ -111,3 +111,18 @@ function getEffectifRegion($region) {
     return $ligne;
 }
 
+
+function getEffectifDivision($divisionCode) {
+    try {
+        $cnx = connexionPDO();
+        $req = $cnx->prepare("select sum(EFF_".$divisionCode.") from effectifs");
+        $req->execute();
+
+        $ligne = $req->fetch(PDO::FETCH_ASSOC);
+    } catch (PDOException $e) {
+        print "Erreur !: " . $e->getMessage();
+        die();
+    }
+    return $ligne;
+}
+
