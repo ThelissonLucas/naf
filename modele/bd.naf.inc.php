@@ -27,7 +27,7 @@ function getRegions() {
 
     try {
         $cnx = connexionPDO();
-        $req = $cnx->prepare("select region from departement");
+        $req = $cnx->prepare("select DISTINCT region from departement");
         $req->execute();
 
         $ligne = $req->fetch(PDO::FETCH_ASSOC);

@@ -16,7 +16,7 @@
 
             <ul id="menuGeneral">
                 <li> <a href="./?action=accueil">Accueil</a></li> 
-                <li> <a href="./?action=barre">Recherche effectif</a></li> 
+                <li> <a href="./?action=barre"><img src="images/rechercher.png">Recherche effectif</a></li> 
             </ul>
     </nav>
 
