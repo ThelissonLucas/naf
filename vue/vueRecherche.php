@@ -1,4 +1,5 @@
 
+
 <h2>Résultats de la recherche : </h2>
 
 Région selectionnée : <?php echo $region; ?>
@@ -13,7 +14,7 @@ Effectif département : <?php echo $effectifDep ; ?>
 <br />
 Effectif secteur :
 <br />
-Effectif division : <?php //echo $effectifDiv; ?>
+Effectif division : <?php echo $effectifDiv;?>
 
 <h3> Valeur de marché </h3>
-La valeur de marché est de : <?php echo $valMarche ?> €
+La valeur de marché est de : <?php if(isset($valMarche)){echo $valMarche ;} ?> €

@@ -30,20 +30,22 @@ $effectifReg = "";
 $effectifReg = getEffectifRegion($region);
 $effectifReg = implode(",", $effectifReg);
 
-if(isset($effectivDiv)){
-$effectivDiv = getEffectifDivision($divisionCode);
-$effectifReg = implode(",", $effectivDiv);
+
+if(empty($divisionCode)){
+$effectifDiv = "";
+}
+else{
+$effectifDiv = getEffectifDivision($divisionCode);
+$effectifDiv = implode(",", $effectifDiv);
 }
 
-//Recuperation effectif total d'une division
 if($effectifDep != ""){
     $valMarche = $effectifDep * 200;
 } elseif($effectifReg != ""){
     $valMarche = $effectifReg * 200;
-} elseif($effectivDiv != ""){
-    $valMarche = $effectivDiv * 200;
+} elseif($effectifDiv != ""){
+    $valMarche = $effectifDiv * 200;
 }
-
 
 // appel du script de vue qui permet de gerer l'affichage des donnees
 $titre = "Resultats de la recherche";
