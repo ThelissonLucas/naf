@@ -30,6 +30,7 @@ $effectifReg = "";
 $effectifReg = getEffectifRegion($region);
 $effectifReg = implode(",", $effectifReg);
 
+//recuperation effectif division 
 if(empty($divisionCode)){
     $effectifDiv = "";
 }
@@ -38,25 +39,27 @@ else{
     $effectifDiv = implode(",", $effectifDiv);
     }
 
-//recuperation effectif division secteur
-$DivisionSection = getDivisionSecteur($sectionCode);
+//recup divisions d'une section
+$divisionSection = getDivisionSecteur($sectionCode);
 $valeurMarcheSec = 0;
-$sumEff = getSommeEffectifs($DivisionSection);
+//calcul somme effectifs
+$effectifSec = getSommeEffectifs($divisionSection);
 
+$totalSec = 0;
 // Parcours du tableau des sommes et addition
-foreach($sumEff as $sum) {
-    $valeurMarcheSec += $sum;
+foreach($effectifSec as $sum) {
+    $totalSec += $sum;
 }
-$valeurMarcheSec = $valeurMarcheSec * 200;
 
-
-//Recuperation effectif total d'une division
+//Calcul valeur marche
 if($effectifDep != ""){
     $valMarche = $effectifDep * 200;
 } elseif($effectifReg != ""){
     $valMarche = $effectifReg * 200;
 } elseif($effectifDiv != ""){
     $valMarche = $effectifDiv * 200;
+} elseif($totalSec != ""){
+    $valMarche = $totalSec * 200;
 }
 
 
