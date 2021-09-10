@@ -30,22 +30,38 @@ $effectifReg = "";
 $effectifReg = getEffectifRegion($region);
 $effectifReg = implode(",", $effectifReg);
 
-
+//recuperation effectif division 
 if(empty($divisionCode)){
-$effectifDiv = "";
+    $effectifDiv = "";
 }
 else{
-$effectifDiv = getEffectifDivision($divisionCode);
-$effectifDiv = implode(",", $effectifDiv);
+    $effectifDiv = getEffectifDivision($divisionCode);
+    $effectifDiv = implode(",", $effectifDiv);
+    }
+
+//recup divisions d'une section
+$divisionSection = getDivisionSecteur($sectionCode);
+$valeurMarcheSec = 0;
+//calcul somme effectifs
+$effectifSec = getSommeEffectifs($divisionSection);
+
+$totalSec = 0;
+// Parcours du tableau des sommes et addition
+foreach($effectifSec as $sum) {
+    $totalSec += $sum;
 }
 
+//Calcul valeur marche
 if($effectifDep != ""){
     $valMarche = $effectifDep * 200;
 } elseif($effectifReg != ""){
     $valMarche = $effectifReg * 200;
 } elseif($effectifDiv != ""){
     $valMarche = $effectifDiv * 200;
+} elseif($totalSec != ""){
+    $valMarche = $totalSec * 200;
 }
+
 
 // appel du script de vue qui permet de gerer l'affichage des donnees
 $titre = "Resultats de la recherche";
