@@ -30,18 +30,33 @@ $effectifReg = "";
 $effectifReg = getEffectifRegion($region);
 $effectifReg = implode(",", $effectifReg);
 
-if(isset($effectivDiv)){
-$effectivDiv = getEffectifDivision($divisionCode);
-$effectifReg = implode(",", $effectivDiv);
+if(empty($divisionCode)){
+    $effectifDiv = "";
 }
+else{
+    $effectifDiv = getEffectifDivision($divisionCode);
+    $effectifDiv = implode(",", $effectifDiv);
+    }
+
+//recuperation effectif division secteur
+$DivisionSection = getDivisionSecteur($sectionCode);
+$valeurMarcheSec = 0;
+$sumEff = getSommeEffectifs($DivisionSection);
+
+// Parcours du tableau des sommes et addition
+foreach($sumEff as $sum) {
+    $valeurMarcheSec += $sum;
+}
+$valeurMarcheSec = $valeurMarcheSec * 200;
+
 
 //Recuperation effectif total d'une division
 if($effectifDep != ""){
     $valMarche = $effectifDep * 200;
 } elseif($effectifReg != ""){
     $valMarche = $effectifReg * 200;
-} elseif($effectivDiv != ""){
-    $valMarche = $effectivDiv * 200;
+} elseif($effectifDiv != ""){
+    $valMarche = $effectifDiv * 200;
 }
 
 

@@ -126,3 +126,44 @@ function getEffectifDivision($divisionCode) {
     return $ligne;
 }
 
+function getDivisionSecteur($secteurCode) {
+    $resultat = array();
+
+    try {
+        $cnx = connexionPDO();
+        $req = $cnx->prepare("SELECT division_code FROM `naf` WHERE section_code = '$secteurCode'");
+        $req->execute();
+
+        $ligne = $req->fetch(PDO::FETCH_ASSOC);
+        while ($ligne) {
+            $resultat[] = $ligne;
+            $ligne = $req->fetch(PDO::FETCH_ASSOC);
+        }
+    } catch (PDOException $e) {
+        print "Erreur !: " . $e->getMessage();
+        die();
+    }
+    return $resultat;
+}
+
+function getSommeEffectifs($DivisionSection){
+    $resultat = array();
+
+    try {
+        $cnx = connexionPDO();
+        foreach($DivisionSection as $code) {
+            $column = "EFF_".$code['division_code'];
+            $req = $cnx->prepare("SELECT SUM($column) as sum FROM `effectifs`");
+            $req->execute();
+            
+            $ligne = $req->fetch(PDO::FETCH_ASSOC);
+            if($ligne) {
+                $resultat[] = $ligne["sum"];
+            }
+        }
+    } catch (PDOException $e) {
+        print "Erreur !: " . $e->getMessage();
+        die();
+    }
+    return $resultat;
+}
