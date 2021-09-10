@@ -1,9 +1,9 @@
 <?php
 
 function connexionPDO() {
-    $login = "root";
+    $login = "";
     $mdp = "";
-    $bd = "kowalinski";
+    $bd = "";
     $serveur = "127.0.0.1";
 
     try {
